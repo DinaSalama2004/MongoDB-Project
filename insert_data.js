@@ -1,24 +1,93 @@
 
-
-// Insert Students
-
 db.students.insertMany([
-  { student_id: "S001", name: "Alice Johnson", email: "alice@example.com", department: "CS", address_city: "Cairo", address_street: "El Nasr St", address_zip: "11511", phone: "01011111111" },
-  { student_id: "S002", name: "Bob Smith", email: "bob@example.com", department: "CS", address_city: "Giza", address_street: "Tahrir St", address_zip: "12345", phone: "01022222222" },
-  { student_id: "S003", name: "Charlie Lee", email: "charlie@example.com", department: "Math", address_city: "Alexandria", address_street: "Corniche St", address_zip: "21555", phone: "01033333333" },
-  { student_id: "S004", name: "Dina Saad", email: "dina@example.com", department: "Math", address_city: "Cairo", address_street: "Maadi St", address_zip: "11519", phone: "01044444444" },
-  { student_id: "S005", name: "Ehab Ali", email: "ehab@example.com", department: "Physics", address_city: "Cairo", address_street: "Dokki St", address_zip: "11518", phone: "01055555555" },
-  { student_id: "S006", name: "Fatma Omar", email: "fatma@example.com", department: "CS", address_city: "Cairo", address_street: "Heliopolis St", address_zip: "11512", phone: "01066666666" },
-  { student_id: "S007", name: "Gamal Hassan", email: "gamal@example.com", department: "Math", address_city: "Cairo", address_street: "Nasr City St", address_zip: "11513", phone: "01077777777" },
-  { student_id: "S008", name: "Hana Youssef", email: "hana@example.com", department: "Physics", address_city: "Giza", address_street: "6th October St", address_zip: "12346", phone: "01088888888" },
-  { student_id: "S009", name: "Ibrahim Fathy", email: "ibrahim@example.com", department: "CS", address_city: "Alexandria", address_street: "Stanley St", address_zip: "21556", phone: "01099999999" },
-  { student_id: "S010", name: "Jana Karim", email: "jana@example.com", department: "Math", address_city: "Cairo", address_street: "Zamalek St", address_zip: "11514", phone: "01010101010" }
+  { 
+    student_id: "S001",
+    name: "Alice Johnson",
+    email: "alice@example.com",
+    department: "CS",
+    address: { city: "Cairo", street: "El Nasr St", zip: "11511" },
+    phone: "01011111111"
+  },
+  { 
+    student_id: "S002",
+    name: "Bob Smith",
+    email: "bob@example.com",
+    department: "CS",
+    address: { city: "Giza", street: "Tahrir St", zip: "12345" },
+    phone: "01022222222"
+  },
+  { 
+    student_id: "S003",
+    name: "Charlie Lee",
+    email: "charlie@example.com",
+    department: "Math",
+    address: { city: "Alexandria", street: "Corniche St", zip: "21555" },
+    phone: "01033333333"
+  },
+  { 
+    student_id: "S004",
+    name: "Dina Saad",
+    email: "dina@example.com",
+    department: "Math",
+    address: { city: "Cairo", street: "Maadi St", zip: "11519" },
+    phone: "01044444444"
+  },
+  { 
+    student_id: "S005",
+    name: "Ehab Ali",
+    email: "ehab@example.com",
+    department: "Physics",
+    address: { city: "Cairo", street: "Dokki St", zip: "11518" },
+    phone: "01055555555"
+  },
+  { 
+    student_id: "S006",
+    name: "Fatma Omar",
+    email: "fatma@example.com",
+    department: "CS",
+    address: { city: "Cairo", street: "Heliopolis St", zip: "11512" },
+    phone: "01066666666"
+  },
+  { 
+    student_id: "S007",
+    name: "Gamal Hassan",
+    email: "gamal@example.com",
+    department: "Math",
+    address: { city: "Cairo", street: "Nasr City St", zip: "11513" },
+    phone: "01077777777"
+  },
+  { 
+    student_id: "S008",
+    name: "Hana Youssef",
+    email: "hana@example.com",
+    department: "Physics",
+    address: { city: "Giza", street: "6th October St", zip: "12346" },
+    phone: "01088888888"
+  },
+  { 
+    student_id: "S009",
+    name: "Ibrahim Fathy",
+    email: "ibrahim@example.com",
+    department: "CS",
+    address: { city: "Alexandria", street: "Stanley St", zip: "21556" },
+    phone: "01099999999"
+  },
+  { 
+    student_id: "S010",
+    name: "Jana Karim",
+    email: "jana@example.com",
+    department: "Math",
+    address: { city: "Cairo", street: "Zamalek St", zip: "11514" },
+    phone: "01010101010"
+  }
 ]);
+
+print("✅ 10 students inserted with embedded addresses");
 
 print("✅ 10 students inserted");
 
 
-// 2️⃣ Insert Courses
+// 2 Insert Courses
 
 db.courses.insertMany([
   { course_code: "CS101", name: "Intro to CS", department: "CS", credits: 3 },
@@ -31,7 +100,7 @@ db.courses.insertMany([
 print("✅ 5 courses inserted");
 
 
-// 3️⃣ Insert Semesters
+// 3 Insert Semesters
 
 db.semesters.insertMany([
   { semester_name: "Fall 2025", start_date: new Date("2025-09-01"), end_date: new Date("2025-12-31") },
