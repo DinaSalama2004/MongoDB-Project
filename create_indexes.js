@@ -24,14 +24,16 @@ async function createIndexes() {
   
     // 2 Compound index to prevent duplicate enrollment
   
+
     await db.collection("enrollments").createIndex(
-      {
-        studentId: 1,
-        courseId: 1,
-        semester: 1
-      },
-      { unique: true }
-    );
+  {
+    student_id: 1,
+    course_id: 1,
+    semester_id: 1
+  },
+  { unique: true }
+);
+
 
 // Additional indexes for performance optimization
   db.enrollments.createIndex({ student_id: 1 });
