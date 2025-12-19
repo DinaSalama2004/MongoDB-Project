@@ -36,9 +36,9 @@ async function createIndexes() {
 
 
 // Additional indexes for performance optimization
-  db.enrollments.createIndex({ student_id: 1 });
-  db.courses.createIndex({ department: 1 });
-  db.semesters.createIndex({ semester_name: 1 });
+  await db.collection("enrollments").createIndex({ student_id: 1 });
+  await db.collection("courses").createIndex({ department: 1 });
+  await db.collection("semesters").createIndex({ semester_name: 1 });
     console.log("Compound unique index created on enrollments");
 
   } catch (error) {

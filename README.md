@@ -94,7 +94,7 @@ Implemented in `aggregations.js`:
 - **Students:** 10
 - **Courses:** 5
 - **Semesters:** 2
-- **Enrollments:** 20
+- **Enrollments:** 50
 
 ---
 
