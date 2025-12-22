@@ -178,7 +178,7 @@ async function deleteDroppedEnrollment(db, studentId, courseId) {
   } else {
     console.log("\n⚠️ Enrollment not found");
   }
-
+}
 /* -------------------- 5. List courses taken by a student -------------------- */
 async function listStudentCourses(db, studentId) {
   const result = await db.collection("enrollments").aggregate([
@@ -203,7 +203,7 @@ async function listStudentCourses(db, studentId) {
 
   console.log(`\n✅ Courses taken by student ${studentId}:`);
   console.table(result);
-}}
+}
 
 /* -------------------- INTERACTIVE MENU -------------------- */
 async function runQueries() {
