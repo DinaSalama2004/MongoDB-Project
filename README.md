@@ -65,11 +65,17 @@ The project includes at least the following collections:
 
 ## CRUD Queries
 The following operations are implemented in `queries.js`:
-1. Find all students in a specific department.
-2. Find students with GPA greater than a given threshold.
-3. Update a student’s email.
-4. Delete a dropped enrollment.
-5. List all courses taken by a specific student.
+1. **Find all students in a specific department.**
+   Finds the students department (CS).
+2. **Find students with GPA greater than a given threshold.**
+   Calculate the average grade for each student and
+   return students whose average grade is greater than 85.
+3. **Update a student’s email.**
+   Update the email address of a specific student using student_id.
+4. **Delete a dropped enrollment.**
+   Delete enrollments with very low grades less than 65(considered dropped).
+5. **List all courses taken by a specific student.**
+   List all courses taken by a specific student along with grades.
 
 ---
 
@@ -77,16 +83,59 @@ The following operations are implemented in `queries.js`:
 Implemented in `aggregations.js`:
 
 1. **Student Transcript**  
-   Aggregates student info, courses enrolled, and grades for a detailed transcript.
+   *Purpose:*
+   Displays a full transcript showing each student’s name, the courses they took, the semester, and the grade.
+
+   *How it works:*
+   Joins enrollments with students to get student names.
+   Joins with courses to get course names.
+   Joins with semesters to get semester names.
+   Uses $project to display only readable fields.
+
+   *Result:*
+   A detailed list similar to a transcript:
+   Student Name | Course Name | Semester | Grade
 
 2. **Semester GPA Report**  
-   Calculates GPA per student per semester.
+   *Purpose:*
+   Calculates the average grade (GPA) for each student in each semester.
+
+   *How it works:*
+   Groups enrollment records by student_id + semester_id.
+   Calculates the average grade using $avg.
+   Joins with students to show student names.
+   Rounds the GPA to 2 decimal places.
+
+   *Result:*
+   Student Name | Semester | Average Grade (GPA)
 
 3. **Course Statistics**  
-   Computes the number of students enrolled and the average grade for each course.
+   *Purpose:*
+   Provides statistics for each course, including how many students enrolled and the average grade.
+
+   *How it works:*
+   Groups enrollments by course_id.
+   Counts students using $sum.
+   Calculates average grade using $avg.
+   Joins with courses to display course names.
+   Rounds the average grade.
+
+   *Result:*
+   Course Name | Number of Students | Average Grade
 
 4. **Top Performing Students**  
-   Identifies the top N students by GPA.
+   *Purpose:*
+   Ranks students from highest to lowest based on their overall average grade.
+
+   *How it works:*
+   Groups enrollments by student_id.
+   Calculates each student’s overall average grade.
+   Joins with students to display names.
+   Sorts results in descending order of average grade.
+   Rounds the average grade.
+
+   *Result:*
+   Student Name | Average Grade (Ranked)
 
 ---
 

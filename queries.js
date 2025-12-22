@@ -166,6 +166,7 @@ async function updateStudentEmail(db, studentId, newEmail) {
   }
 }
 
+<<<<<<< Updated upstream
 /* -------------------- 4. Delete dropped enrollment -------------------- */
 async function deleteDroppedEnrollment(db, studentId, courseId) {
   const result = await db.collection("enrollments").deleteOne({
@@ -178,6 +179,11 @@ async function deleteDroppedEnrollment(db, studentId, courseId) {
   } else {
     console.log("\n⚠️ Enrollment not found");
   }
+=======
+async function deleteDropped(db) {
+  const result = await db.collection("enrollments").deleteMany({ grade: { $lt: 65 } });
+  console.log("✅ Deleted enrollments with grade < 65:", result.deletedCount, "document(s)");
+>>>>>>> Stashed changes
 }
 
 /* -------------------- 5. List courses taken by a student -------------------- */
@@ -255,6 +261,7 @@ async function runQueries() {
           break;
 
         case "4":
+<<<<<<< Updated upstream
           rl.question("Enter student ID: ", (sid) => {
             rl.question("Enter course ID: ", async (cid) => {
               await deleteDroppedEnrollment(db, sid, cid);
@@ -262,6 +269,9 @@ async function runQueries() {
               await closeDB();
             });
           });
+=======
+          await deleteDropped(db);
+>>>>>>> Stashed changes
           break;
 
         case "5":
